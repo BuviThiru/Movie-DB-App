@@ -11,6 +11,7 @@ function useFetchdata(urlParams) {
     },[urlParams])
     console.log(">>>>>>>>>>PARAMS",urlParams)
     async function loadData(){
+      console.log(`${Base_URL}${urlParams}`)
        let response = await fetch(`${Base_URL}${urlParams}`);
        let data = await response.json();
      if(data.Response){
