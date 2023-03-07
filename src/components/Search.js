@@ -6,8 +6,8 @@ export default function Search() {
  return(
     <form  onSubmit={(e)=>e.preventDefault()}>
         <h1>Search for the Movies</h1>
-        <input onChange ={(e)=>setQuery(e.target.value)} placeholder="Search"/>
-        {error && <div>{error.Message}</div>}
+        <input onChange ={(e)=>setQuery(e.target.value)} placeholder="Search" value={query}/>
+        {error.display && <div>{error.Message}</div>}
     </form>
  )
 }
