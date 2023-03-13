@@ -7,22 +7,22 @@ function useFetchdata(urlParams) {
     const [data,setData] = useState(null);
    
     useEffect(()=>{
-         loadData();       
+      async function loadData(){     
+         let response = await fetch(`${Base_URL}${urlParams}`);
+         let data = await response.json();
+       if(data.Response){
+          setData(data.Search || data)
+          setError({display:false,Message:""})
+         
+       }else{
+          setError({display:true,Message:data.Error})
+       }
+       setIsloading(false)    
+      }
+      loadData();       
     },[urlParams])
  
-    async function loadData(){
-     
-       let response = await fetch(`${Base_URL}${urlParams}`);
-       let data = await response.json();
-     if(data.Response){
-        setData(data.Search || data)
-        setError({display:false,Message:""})
-       
-     }else{
-        setError({display:true,Message:data.Error})
-     }
-     setIsloading(false)    
-    }
+ 
   return  {isLoading,error,data}
 
 }

@@ -4,7 +4,7 @@ import useFetchdata from '../utils/useFetchdata';
 
 function MovieDescription() {
     const {id} = useParams();
-    const {isLoading,error,data} = useFetchdata(`&i=${id}`)
+    const {isLoading,data} = useFetchdata(`&i=${id}`)
     console.log("Single",data)
     if(isLoading) return(<div>Loading....</div>)
   return (
